@@ -1,0 +1,50 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --surface: #d3d3d3;
+  --primary: #418FDE;
+}
+
+img.slide {
+  display: none;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+article.slider {
+  height: 100vh;
+  width: 100%;
+  box-shadow: 0 0 10px #00000033;
+  position: relative;
+}
+
+div.indicators {
+  padding: 2%;
+  padding-left: 0px;
+  text-align: center;
+  position: absolute;
+  bottom: -20px;
+  left: 45%;
+}
+
+div.indicators button{
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  background: var(--surface);
+  border: none;
+}
+
+div.indicators button:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+}
+
+div.indicators button.active {
+  background-color: var(--primary);
+}

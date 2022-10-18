@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link type="text/css" rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <section>
+    <article class="slider">
+      <picture>
+        <source media="(max-width: 320px)" srcset="./images/1/MINI-1.png">
+        <source media="(max-width: 640px)" srcset="./images/1/SMALL-1.png">
+        <source media="(max-width: 960px)" srcset="./images/1/MEDIUM-1.png">
+        <source media="(max-width: 1280px)" srcset="./images/1/LARGE-1.png">
+        <img src="./images/1/LARGE-1.png"  alt="Slide 1" class="slide">
+      </picture>
+
+      <picture>
+        <source media="(max-width: 320px)" srcset="./images/2/MINI-2.png">
+        <source media="(max-width: 640px)" srcset="./images/2/SMALL-2.png">
+        <source media="(max-width: 960px)" srcset="./images/2/MEDIUM-2.png">
+        <source media="(max-width: 1280px)" srcset="./images/2/LARGE-2.png">
+        <img src="./images/2/LARGE-2.png" alt="Slide 2" class="slide">
+      </picture>
+
+      <picture>
+        <source media="(max-width: 320px)" srcset="./images/3/MINI-3.png">
+        <source media="(max-width: 640px)" srcset="./images/3/SMALL-3.png">
+        <source media="(max-width: 960px)" srcset="./images/3/MEDIUM-3.png">
+        <source media="(max-width: 1280px)" srcset="./images/3/LARGE-3.png">
+        <img src="./images/3/LARGE-3.png" alt="Slide 3" class="slide">
+      </picture>
+
+      <div class="indicators">
+        <button class="indicator" onclick="currentDiv (1)"></button>
+        <button class="indicator" onclick="currentDiv (2)"></button>
+        <button class="indicator" onclick="currentDiv (3)"></button>
+      </div>
+    </article>
+  </section>
+  <script>
+    var slideIndex = 0;
+
+    carousel();
+
+    function carousel() {
+      let x = document.getElementsByClassName("slide");
+      for (let i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {
+        slideIndex = 1
+      }
+      x[slideIndex - 1].style.display = "block";
+      currentDiv(slideIndex)
+      setTimeout(carousel, 4000); // 10 seconds
+    }
+
+    showDivs(slideIndex + 1);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      let i;
+      var x = document.getElementsByClassName("slide");
+      var dots = document.getElementsByClassName("indicator");
+      if (n > x.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = x.length }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace("active", "");
+      }
+      x[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+    function currentDiv(n) {
+      showDivs(slideIndex = n);
+    }
+  </script>
+</body>
+
+</html>
